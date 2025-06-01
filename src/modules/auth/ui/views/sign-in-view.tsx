@@ -32,6 +32,7 @@ const formSchema = z.object({
 export const SignInView = () => {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
+  const [pending, setPending] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,6 +43,7 @@ export const SignInView = () => {
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     setError(null);
+    setPending(true);
 
     authClient.signIn.email(
       {
@@ -50,9 +52,11 @@ export const SignInView = () => {
       },
       {
         onSuccess: () => {
+          setPending(false);
           router.push("/");
         },
         onError: ({ error }) => {
+          setPending(false);
           setError(error.message);
         },
       }
@@ -101,7 +105,7 @@ export const SignInView = () => {
                     name="password"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email </FormLabel>
+                        <FormLabel>Password </FormLabel>
                         <FormControl>
                           <Input
                             type="password"
@@ -122,7 +126,7 @@ export const SignInView = () => {
                     <AlertTitle>{error}</AlertTitle>
                   </Alert>
                 )}
-                <Button type="submit" className="w-full">
+                <Button type="submit" className="w-full" disabled={pending}>
                   Sign-in
                 </Button>
 
@@ -135,11 +139,21 @@ export const SignInView = () => {
 
                 <div className="grid grid-cols-2 gap-4">
                   {/* Google Icon */}
-                  <Button variant="outline" type="button" className="w-full">
+                  <Button
+                    disabled={pending}
+                    variant="outline"
+                    type="button"
+                    className="w-full"
+                  >
                     Google
                   </Button>
                   {/* Github Icon */}
-                  <Button variant="outline" type="button" className="w-full">
+                  <Button
+                    disabled={pending}
+                    variant="outline"
+                    type="button"
+                    className="w-full"
+                  >
                     Github
                   </Button>
                 </div>
