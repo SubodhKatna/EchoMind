@@ -200,7 +200,7 @@ export const SignInView = () => {
           </Form>
 
           {/* The Logo Part */}
-          <div className="bg-radial from-[#a9c2c9f2] to-[#336e58] relative hidden md:flex flex-col gap-y-4 items-center justify-center">
+          <div className="bg-radial from-[#abc4ba] to-[#235835] relative hidden md:flex flex-col gap-y-4 items-center justify-center">
             <img
               src="logo.svg"
               alt="Logo of the website"
