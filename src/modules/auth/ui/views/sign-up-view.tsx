@@ -18,7 +18,7 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel, 
+  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
@@ -76,7 +76,7 @@ export const SignUpView = () => {
         name: data.name,
         email: data.email,
         password: data.password,
-        callbackURL: "/"
+        callbackURL: "/",
       },
       {
         onSuccess: () => {
@@ -98,7 +98,7 @@ export const SignUpView = () => {
     authClient.signIn.social(
       {
         provider: provider,
-        callbackURL: "/"
+        callbackURL: "/",
       },
       {
         onSuccess: () => {
@@ -111,7 +111,7 @@ export const SignUpView = () => {
       }
     );
   };
-  
+
   return (
     <div className="flex flex-col gap-6">
       <Card className="overflow-hidden p-0">
@@ -214,7 +214,7 @@ export const SignUpView = () => {
                     <AlertTitle>{error}</AlertTitle>
                   </Alert>
                 )}
-                <Button type="submit" className="w-full" disabled={pending}>
+                <Button type="submit" className="w-full cursor-pointer" disabled={pending}>
                   Create Account
                 </Button>
 
@@ -231,7 +231,7 @@ export const SignUpView = () => {
                     disabled={pending}
                     variant="outline"
                     type="button"
-                    className="w-full"
+                    className="w-full cursor-pointer"
                     onClick={() => onSocial("google")}
                   >
                     <FaGoogle />
@@ -241,7 +241,7 @@ export const SignUpView = () => {
                     disabled={pending}
                     variant="outline"
                     type="button"
-                    className="w-full"
+                    className="w-full cursor-pointer"
                     onClick={() => onSocial("github")}
                   >
                     <FaGithub />
@@ -263,11 +263,11 @@ export const SignUpView = () => {
           </Form>
 
           {/* The Logo Part */}
-          <div className="bg-radial from-[#a9c2c9f2] to-[#336e58] relative hidden md:flex flex-col gap-y-4 items-center justify-center">
+          <div className="bg-radial from-[#467362] to-[#235835] relative hidden md:flex flex-col gap-y-4 items-center justify-center">
             <img
               src="logo.svg"
               alt="Logo of the website"
-              className="h-[92px] w-[92px]"
+              className="h-[92px] w-[92px] drop-shadow-[0_4px_16px_rgba(0,0,0,0.45)] brightness-125"
             />
             <p className="text-2xl font-semibold text-white">EchoMind</p>
           </div>

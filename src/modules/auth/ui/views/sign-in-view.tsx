@@ -49,8 +49,8 @@ export const SignInView = () => {
 
     authClient.signIn.social(
       {
-       provider: provider,
-       callbackURL: "/"
+        provider: provider,
+        callbackURL: "/",
       },
       {
         onSuccess: () => {
@@ -73,7 +73,7 @@ export const SignInView = () => {
       {
         email: data.email,
         password: data.password,
-        callbackURL: "/"
+        callbackURL: "/",
       },
       {
         onSuccess: () => {
@@ -151,7 +151,7 @@ export const SignInView = () => {
                     <AlertTitle>{error}</AlertTitle>
                   </Alert>
                 )}
-                <Button type="submit" className="w-full" disabled={pending}>
+                <Button type="submit" className="w-full cursor-pointer" disabled={pending}>
                   Sign-in
                 </Button>
 
@@ -168,10 +168,10 @@ export const SignInView = () => {
                     disabled={pending}
                     variant="outline"
                     type="button"
-                    className="w-full"
+                    className="w-full cursor-pointer"
                     onClick={() => onSocial("google")}
                   >
-                   <FaGoogle />
+                    <FaGoogle />
                   </Button>
                   {/* Github Icon */}
                   <Button
@@ -179,7 +179,7 @@ export const SignInView = () => {
                     onClick={() => onSocial("github")}
                     variant="outline"
                     type="button"
-                    className="w-full"
+                    className="w-full cursor-pointer"
                   >
                     <FaGithub />
                   </Button>
@@ -200,11 +200,11 @@ export const SignInView = () => {
           </Form>
 
           {/* The Logo Part */}
-          <div className="bg-radial from-[#abc4ba] to-[#235835] relative hidden md:flex flex-col gap-y-4 items-center justify-center">
+          <div className="bg-radial from-[#467362] to-[#235835] relative hidden md:flex flex-col gap-y-4 items-center justify-center">
             <img
               src="logo.svg"
               alt="Logo of the website"
-              className="h-[92px] w-[92px]"
+              className="h-[92px] w-[92px] drop-shadow-[0_4px_16px_rgba(0,0,0,0.45)] brightness-125"
             />
             <p className="text-2xl font-semibold text-white">EchoMind</p>
           </div>
