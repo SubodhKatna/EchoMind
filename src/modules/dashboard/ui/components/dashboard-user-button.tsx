@@ -19,8 +19,8 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { GeneratedAvatar } from "@/components/generated-aavatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { GeneratedAvatar } from "@/components/generated-avatar";
 import { ChevronDownIcon, CreditCardIcon, LogOutIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -55,6 +55,7 @@ export const DashboardUserButton = () => {
             {user.image ? (
               <Avatar>
                 <AvatarImage src={user.image} />
+                <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
               </Avatar>
             ) : (
               <GeneratedAvatar
@@ -79,16 +80,14 @@ export const DashboardUserButton = () => {
             <Button
               variant="outline"
               onClick={() => router.push("/billing")}
-              className="flex items-center justify-start gap-2"
-            >
+              className="flex items-center justify-start gap-2">
               <CreditCardIcon className="size-4 text-black" />
               Billing
             </Button>
             <Button
               variant="outline"
               onClick={onLogout}
-              className="flex items-center justify-start gap-2"
-            >
+              className="flex items-center justify-start gap-2">
               <LogOutIcon className="size-4 text-black" />
               Logout
             </Button>
@@ -132,15 +131,13 @@ export const DashboardUserButton = () => {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="cursor-pointer flex items-center justify-between"
-          onClick={() => router.push("/billing")}
-        >
+          onClick={() => router.push("/billing")}>
           Billing
           <CreditCardIcon className="size-4" />
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={onLogout}
-          className="cursor-pointer flex items-center justify-between"
-        >
+          className="cursor-pointer flex items-center justify-between">
           Log Out
           <LogOutIcon className="size-4" />
         </DropdownMenuItem>
