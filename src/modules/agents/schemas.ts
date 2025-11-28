@@ -14,3 +14,6 @@ export const agentsInsertSchema = z.object({
     .max(2000, { message: "Instruction is too long" }),
 });
 
+export const agentsUpdatedSchema = agentsInsertSchema.extend({
+  id: z.string().min(1, {message: "Id is required"})
+})
